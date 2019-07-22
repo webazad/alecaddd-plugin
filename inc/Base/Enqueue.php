@@ -8,7 +8,7 @@ if ( ! class_exists( 'Enqueue' ) ) :
     class Enqueue extends BaseController{
         public $countries = null;
         public function __construct() {}
-        public static function register() {
+        public function register() {
             add_action('wp_enqueue_scripts',array($this,'enqueue'));            
         }
         public function enqueue() {

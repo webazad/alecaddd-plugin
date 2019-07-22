@@ -23,28 +23,27 @@ defined('ABSPATH') || exit;
 //define('PLUGIN_URL',plugin_dir_url(__FILE__));
 //define('PLUGIN_BASENAME',plugin_basename(__FILE__));
 
-function activate_alecaddd(){
-    Activate::activate();
-}
-register_activation_hook(__FILE__,'activate_alecaddd');
+// function activate_alecaddd(){
+//     Activate::activate();
+// }
+// register_activation_hook(__FILE__,'activate_alecaddd');
 
-function deactivate_alecaddd(){
-    Deactivate::deactivate();
-}
-register_deactivation_hook(__FILE__,'deactivate_alecaddd');
+// function deactivate_alecaddd(){
+//     Deactivate::deactivate();
+// }
+// register_deactivation_hook(__FILE__,'deactivate_alecaddd');
 
-function uninstall_alecaddd(){
-    Uninstall::uninstall();
-}
-register_uninstall_hook(__FILE__,'uninstall_alecaddd');
+// function uninstall_alecaddd(){
+//     Uninstall::uninstall();
+// }
+// register_uninstall_hook(__FILE__,'uninstall_alecaddd');
 
 if(file_exists(dirname(__FILE__) . '/vendor/autoload.php')){
-    require_once (dirname(__FILE__) . '/vendor/autoload.php');
+    require_once dirname(__FILE__) . '/vendor/autoload.php';
 }
 
-if ( class_exists( 'Inc\\Init' ) ):
-    
+if ( class_exists( 'Inc\\Init' ) ) :    
     Inc\Init::register_services();
-
 endif;
+
 

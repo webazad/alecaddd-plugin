@@ -7,8 +7,8 @@ if ( ! class_exists( 'SettingsLinks' ) ) :
 
     class SettingsLinks extends BaseController{
         public function __construct() {}
-        public static function register() {
-            add_filter('plugin_action_links-'.$this->plugin,array($this,'settings_links'));           
+        public function register() {
+            add_filter('plugin_action_links-asdf',array($this,'settings_links'));           
         }
         public function settings_links($links) {
             $settings_links = '<a href="admin.php/page=alecaddd-plugin">Settings</a>';

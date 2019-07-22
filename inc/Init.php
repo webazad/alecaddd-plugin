@@ -3,19 +3,17 @@ namespace Inc;
 
 // EXIT IF ACCESSED DIRECTLY
 defined('ABSPATH') || exit;
-
 if ( ! class_exists( 'Init' ) ):
 
-    final class Init{
-        public $plugin_basename;
-        public function __construct() {
-            //$this->plugin_basename = plugin_basename(__FILE__);
-        }
-        public static function get_services() {
-            return [
+     final class Init{
+         public $plugin_basename;
+         public function __construct() {}
+         public static function get_services() {
+             return [
                 Pages\Admin::class,
                 Base\Enqueue::class,
-                Base\SettingsLinks::class
+                Base\SettingsLinks::class,
+                Api\SettingsApi::class
             ];   
         }
         public static function register_services() {
@@ -30,12 +28,12 @@ if ( ! class_exists( 'Init' ) ):
             $service = new $class();
             return $service;
         }
-        public static function _get_instance() {
-            if(is_null(self::$_instance) && ! isset(self::$_instance) && ! (self::$_instance instanceof self)){
-                self::$_instance = new self();            
-            }
-            return self::$_instance;
-        }
-        //public function __destruct() {}
+//         public static function _get_instance() {
+//             if(is_null(self::$_instance) && ! isset(self::$_instance) && ! (self::$_instance instanceof self)){
+//                 self::$_instance = new self();            
+//             }
+//             //return self::$_instance;
+//         }
+//         //public function __destruct() {}
     }
 endif;
