@@ -28,12 +28,6 @@ if ( ! class_exists( 'Init' ) ):
             $service = new $class();
             return $service;
         }
-//         public static function _get_instance() {
-//             if(is_null(self::$_instance) && ! isset(self::$_instance) && ! (self::$_instance instanceof self)){
-//                 self::$_instance = new self();            
-//             }
-//             //return self::$_instance;
-//         }
-//         //public function __destruct() {}
+        public function __destruct() {}
     }
 endif;

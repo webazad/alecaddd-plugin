@@ -10,22 +10,43 @@ if ( ! class_exists( 'Admin' ) ) :
 
     class Admin extends BaseController{
         public $settings;
+        public $pages = array();
+        public $subpages = array();
         public function __construct() {
             $this->settings = new SettingsApi();
-        }
-        public function register() {
-            $pages = array(
+            $this->pages = array(
                 array(
                     'page_title'    => 'Alecaddd Plugin',
                     'menu_title'    => 'Alecaddd Plugin',
                     'capability'    => 'manage_options',
-                    'page_slug'     => 'alecaddd_plugin',
-                    'callback'      => function(){echo 'sdf';},
+                    'menu_slug'     => 'alecaddd_plugin',
+                    'callback'      => function(){echo 'main';},
                     'icon_url'      => '',
                     'position'      => 110
                 )
             );
-            $this->settings->addPages($pages)->register(); //add_action('admin_menu',array($this,'add_admin_pages'));
+            $this->subpages =  array(
+                array(
+                    'parent_slug'   => 'alecaddd_plugin',
+                    'page_title'    => 'One',
+                    'menu_title'    => 'One',
+                    'capability'    => 'manage_options',
+                    'menu_slug'     => 'alecaddd_plugins',
+                    'callback'      => function(){echo 'sub';}
+                ),
+                array(
+                    'parent_slug'   => 'alecaddd_plugin',
+                    'page_title'    => 'Two',
+                    'menu_title'    => 'Two',
+                    'capability'    => 'manage_options',
+                    'menu_slug'     => 'alecaddd_plugins',
+                    'callback'      => function(){echo 'sub';}
+                )
+            );
+        }
+        public function register() {            
+            $this->settings->addPages($this->pages)->withSubPage('Dashboard')->addSubPages($this->subpages)->register();
         }
     }
+
 endif;
