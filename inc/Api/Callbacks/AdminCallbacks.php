@@ -14,10 +14,10 @@ if ( ! class_exists( 'AdminCallbacks' ) ) :
             return $input;
         }
         public function alecadddAdminSection() {
-            echo 'asdf';
+            echo '<input type="checkbox" class="" value="1" checked />';
         }
         public function alecadddTextExample() {
-            echo 'asdf';
+            echo '<div class=""><input type="checkbox" id="ui" class="ui-toggle" value="1" checked /><label for="ui"><div></div></label></div>';
         }
     }
 

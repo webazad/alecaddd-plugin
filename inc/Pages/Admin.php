@@ -72,8 +72,8 @@ if ( ! class_exists( 'Admin' ) ) :
             $args =  array(
                 array(
                     'id'        => 'alecaddd_admin_index',
-                    'title'     => 'text_example',
-                    'callback'  => array($this->callbacks,'alecadddAdminSection'),
+                    'title'     => 'Settings',
+                    'callback'  => '__return_false',//array($this->callbacks,'alecadddAdminSection'),
                     'page'      => 'alecaddd_plugin'
                 )
             );
@@ -83,7 +83,7 @@ if ( ! class_exists( 'Admin' ) ) :
             $args =  array(
                 array(
                     'id'        => 'text_example',
-                    'title'     => 'text_example',
+                    'title'     => 'Text Example',
                     'callback'  => array($this->callbacks,'alecadddTextExample'),
                     'page'      => 'alecaddd_plugin',
                     'section'   => 'alecaddd_admin_index',

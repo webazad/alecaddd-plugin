@@ -7,15 +7,17 @@ if ( ! class_exists( 'Enqueue' ) ) :
 
     class Enqueue extends BaseController{
         public $countries = null;
-        public function __construct() {}
+        public function __construct() {
+            parent::__construct();
+        }
         public function register() {
-            add_action('wp_enqueue_scripts',array($this,'enqueue'));            
+            add_action('admin_enqueue_scripts',array($this,'enqueue'));            
         }
         public function enqueue() {
-            wp_register_style('id',$this->plugins_url . '/assets/style.css','dep','version','bool');
-            wp_enqueue_style('id');
-            wp_register_script('id',$this->plugins_url . '/assets/style.css', 'dep','version','bool');
-            wp_enqueue_script('id');
+            wp_register_style('style',$this->plugin_url . 'assets/css/style.css',null,'8','all');
+            wp_enqueue_style('style');
+            wp_register_script('script',$this->plugin_url . 'assets/js/script.js', null,'9',true);
+            wp_enqueue_script('script');
         }
         public function __destruct() {}
     }
