@@ -1,10 +1,9 @@
 <?php
 namespace Inc\Pages;
-// EXIT IF ACCESSED DIRECTLY
-defined('ABSPATH') || exit;
 
-use \Inc\Base\BaseController;
-use \Inc\Api\SettingsApi;
+use Inc\Api\SettingsApi;
+use Inc\Base\BaseController;
+use Inc\Api\CallBacks\AdminCallbacks;
 
 if ( ! class_exists( 'Admin' ) ) :
 
@@ -12,19 +11,34 @@ if ( ! class_exists( 'Admin' ) ) :
         public $settings;
         public $pages = array();
         public $subpages = array();
-        public function __construct() {
+        public $callbacks;
+        //public function __construct() {}
+        public function register() {   
             $this->settings = new SettingsApi();
+            $this->callbacks = new AdminCallbacks();
+            $this->setPages();
+            $this->setSubPages();
+            
+            $this->setSettings();
+            $this->setSections();
+            $this->setFields();
+            
+            $this->settings->addPages($this->pages)->withSubPage('Dashboard')->addSubPages($this->subpages)->register();
+        }
+        public function setPages(){
             $this->pages = array(
                 array(
                     'page_title'    => 'Alecaddd Plugin',
                     'menu_title'    => 'Alecaddd Plugin',
                     'capability'    => 'manage_options',
                     'menu_slug'     => 'alecaddd_plugin',
-                    'callback'      => function(){echo 'main';},
+                    'callback'      => array($this->callbacks, 'adminDashboard'),
                     'icon_url'      => '',
                     'position'      => 110
                 )
             );
+        }
+        public function setSubPages(){
             $this->subpages =  array(
                 array(
                     'parent_slug'   => 'alecaddd_plugin',
@@ -32,7 +46,7 @@ if ( ! class_exists( 'Admin' ) ) :
                     'menu_title'    => 'One',
                     'capability'    => 'manage_options',
                     'menu_slug'     => 'alecaddd_plugins',
-                    'callback'      => function(){echo 'sub';}
+                    'callback'      => function(){echo 'sub1';}
                 ),
                 array(
                     'parent_slug'   => 'alecaddd_plugin',
@@ -40,13 +54,48 @@ if ( ! class_exists( 'Admin' ) ) :
                     'menu_title'    => 'Two',
                     'capability'    => 'manage_options',
                     'menu_slug'     => 'alecaddd_plugins',
-                    'callback'      => function(){echo 'sub';}
+                    'callback'      => function(){echo 'sub2';}
                 )
             );
         }
-        public function register() {            
-            $this->settings->addPages($this->pages)->withSubPage('Dashboard')->addSubPages($this->subpages)->register();
+        public function setSettings() {
+            $args =  array(
+                array(
+                    'options_group'   => 'alecaddd_options_group',
+                    'option_name'    => 'text_example',
+                    'callback'    => array($this->callbacks,'alecadddOptionsGroup')
+                )
+            );
+            $this->settings->setSettings($args);
         }
+        public function setSections() {
+            $args =  array(
+                array(
+                    'id'        => 'alecaddd_admin_index',
+                    'title'     => 'text_example',
+                    'callback'  => array($this->callbacks,'alecadddAdminSection'),
+                    'page'      => 'alecaddd_plugin'
+                )
+            );
+            $this->settings->setSections($args);
+        }
+        public function setFields() {
+            $args =  array(
+                array(
+                    'id'        => 'text_example',
+                    'title'     => 'text_example',
+                    'callback'  => array($this->callbacks,'alecadddTextExample'),
+                    'page'      => 'alecaddd_plugin',
+                    'section'   => 'alecaddd_admin_index',
+                    'args'   => array(
+                        'label_for' => 'text_example',
+                        'class' => 'class'
+                    )
+                )
+            );
+            $this->settings->setFields($args);
+        }
+        //public function __destruct() {}
     }
 
 endif;

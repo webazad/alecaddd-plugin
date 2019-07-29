@@ -12,8 +12,7 @@ if ( ! class_exists( 'Init' ) ):
              return [
                 Pages\Admin::class,
                 Base\Enqueue::class,
-                Base\SettingsLinks::class,
-                Api\SettingsApi::class
+                Base\SettingsLinks::class
             ];   
         }
         public static function register_services() {
@@ -30,4 +29,5 @@ if ( ! class_exists( 'Init' ) ):
         }
         public function __destruct() {}
     }
+    
 endif;
