@@ -12,7 +12,7 @@
     <div class="tab-content">
         <div id="tab-1" class="tab-pane active">
             <form method="post" action="options.php">
-                <?php settings_fields('alecaddd_plugin_settings'); ?>
+                <?php settings_fields('alecaddd_options_group'); ?>
                 <?php do_settings_sections('alecaddd_plugin'); ?>
                 <?php submit_button(esc_html__('Save Settings','ast'),'primary large'); ?>
             </form>

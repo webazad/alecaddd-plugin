@@ -1,20 +1,20 @@
-$on : #427cdc;
+$on : #7300aa;
 $bg : #d9cb9e;
 $off : #374140;
 
 @mixin center{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,50%);
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%,50%);
 }
 @mixin userSelect($value){
-    -webkit-touch-callout: $value;
-    -webkit-user-select: $value;
-    -khtml-user-select: $value;
-    -moz-user-select: $value;
-    -ms-user-select: $value;
-    user-select: $value;
+     -webkit-touch-callout: $value;
+     -webkit-user-select: $value;
+     -khtml-user-select: $value;
+     -moz-user-select: $value;
+     -ms-user-select: $value;
+     user-select: $value;
 }
 @mixin ui-toggle($height,$on,$off){
     margin: 0;
@@ -28,21 +28,27 @@ $off : #374140;
             box-shadow: inset 0 0 0 #{$height / 2} $on;
 
             > div{
-                margin-left: $height - 4px;
+                margin-left: $height;
             }
         }
     }
+
     label{
         transition: all 200ms ease;
         display: inline-block;
         position: relative;
         @include userSelect(none);
-        background: $off;
         box-shadow: inset 0 0 0 0 $on;
-        border: 2px solid $off;
+        background: $off;
         border-radius: $height + 2;
+        border: 2px solid $off;
         width: $height * 2;
-        height: $height + 2px;
+        height: $height;
+
+        &:hover,
+        & > div:hover{
+            cursor: pointer;
+        }
 
         div{
             transition: all 200ms ease;
@@ -51,12 +57,8 @@ $off : #374140;
             height: $height;
             border-radius: $height / 2;
         }
-        &:hover,
-        & > div:hover{
-            cursor: pointer;
-        }
     }
 }
 div.ui-toggle{
-    @include ui-toggle(40px,$on,$off);
+    @include ui-toggle(20px,$on,$off);
 }

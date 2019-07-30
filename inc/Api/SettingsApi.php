@@ -66,7 +66,7 @@ if ( ! class_exists( 'SettingsApi' ) ) :
             return $this;
         }
         public function registerCustomFields() {
-        // Register setting
+            // Register setting
             foreach($this->settings as $setting){
                 register_setting($setting['option_group'],$setting['option_name'],(isset($setting['callback']) ? $setting['callback'] : ''));
             }

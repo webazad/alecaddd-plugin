@@ -16,6 +16,9 @@ if ( ! class_exists( 'Enqueue' ) ) :
         public function enqueue() {
             wp_register_style('style',$this->plugin_url . 'assets/css/style.css',null,'8','all');
             wp_enqueue_style('style');
+            wp_register_style('checkbox',$this->plugin_url . 'assets/css/checkbox.css',null,'8','all');
+            wp_enqueue_style('checkbox');
+
             wp_register_script('script',$this->plugin_url . 'assets/js/script.js', null,'9',true);
             wp_enqueue_script('script');
         }
