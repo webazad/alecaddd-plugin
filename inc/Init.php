@@ -10,8 +10,9 @@ if ( ! class_exists( 'Init' ) ):
          public function __construct() {}
          public static function get_services() {
              return [
-                Pages\Admin::class,
+                Pages\Dashboard::class,
                 Base\Enqueue::class,
+                Base\CustomPostTypeController::class,
                 Base\SettingsLinks::class
             ];   
         }

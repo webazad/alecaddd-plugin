@@ -25,9 +25,11 @@ if ( ! class_exists( 'ManagerCallbacks' ) ) :
         public function checkboxField($args) {
             $name = $args['label_for'];
             $class = $args['class'];
+            $desc = $args['desc'];
             $option_name = $args['option_name'];
             $checkbox = get_option($option_name);
-            echo '<div class="'.$class.'"><input type="checkbox" name="' . $option_name . '[' . $name .']' . '" id="'.$name.'" class="'.$class.'" value="1" '.($checkbox[$name] ? 'checked' : '').' /><label for="'.$name.'"><div></div></label></div>';
+            echo '<div class="'.$class.'"><input type="checkbox" name="' . $option_name . '[' . $name .']' . '" id="'.$name.'" class="'.$class.'" value="1" '.($checkbox[$name] ? 'checked' : '').' /><label for="'.$name.'"><div></div></label></div>
+            <em>'.$desc.'</em>';
         }
     }
 

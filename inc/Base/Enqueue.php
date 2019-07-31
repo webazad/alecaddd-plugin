@@ -24,4 +24,5 @@ if ( ! class_exists( 'Enqueue' ) ) :
         }
         public function __destruct() {}
     }
+    
 endif;

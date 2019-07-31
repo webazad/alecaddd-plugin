@@ -16,18 +16,45 @@ if ( ! class_exists( 'BaseController' ) ) :
             $this->plugin = plugin_basename(dirname(__FILE__, 3)).'/alecaddd-plugin.php';
             
             $this->managers = array(
-                'cpt_manager'           => 'Activate CPT Manger',
-                'taxonomy_manager'      => 'Activate Taxonomy Manger',
-                'media_widget'          => 'Activate Media Widget',
-                'gallery_manager'       => 'Activate Gallery Manger',
-                'testimonial_manager'   => 'Activate Testimonial Manager',
-                'templates_manager'     => 'Activate Templates Manager',
-                'login_manager'         => 'Activate Login Manager',
-                'membership_manager'    => 'Activate Membership Manager',
-                'chat_manager'          => 'Activate Chat Manger'
+                'cpt_manager'           => array(
+                    'title' => 'Activate CPT Manger',
+                    'desc' => 'Custom post manager can be changed easily here',
+                ),
+                'taxonomy_manager'           => array(
+                    'title' => 'Activate Taxonomy Manger',
+                    'desc' => 'Taxonomy manager can be changed easily here',
+                ),
+                'media_widget'           => array(
+                    'title' => 'Activate Media Widget',
+                    'desc' => 'Media widget can be chnaged easily here',
+                ),
+                'gallery_manager'           => array(
+                    'title' => 'Activate Gallery Manger',
+                    'desc' => 'Gallery manager can be changed easily here',
+                ),
+                'testimonial_manager'           => array(
+                    'title' => 'Activate Testimonial Manager',
+                    'desc' => 'Click button to chnage. Violate is activated. Black is activated.',
+                ),
+                'templates_manager'           => array(
+                    'title' => 'Activate Templates Manager',
+                    'desc' => 'Click button to chnage. Violate is activated. Black is activated.',
+                ),
+                'login_manager'           => array(
+                    'title' => 'Activate Login Manager',
+                    'desc' => 'Click button to chnage. Violate is activated. Black is activated.',
+                ),
+                'membership_manager'           => array(
+                    'title' => 'Activate Membership Manager',
+                    'desc' => 'Click button to chnage. Violate is activated. Black is activated.',
+                ),
+                'chat_manager'           => array(
+                    'title' => 'Activate Chat Manger',
+                    'desc' => 'Click button to chnage. Violate is activated. Black is activated.',
+                )
             );
         }
-        //public static function custom() {}
         //public static function __destruct() {}
     }
+
 endif;

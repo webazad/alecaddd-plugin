@@ -6,9 +6,9 @@ use Inc\Base\BaseController;
 use Inc\Api\CallBacks\AdminCallbacks;
 use Inc\Api\CallBacks\ManagerCallbacks;
 
-if ( ! class_exists( 'Admin' ) ) :
+if ( ! class_exists( 'Dashboard' ) ) :
 
-    class Admin extends BaseController{
+    class Dashboard extends BaseController{
         public $settings;
         public $callbacks;
         public $callbacks_mngr;
@@ -101,17 +101,18 @@ if ( ! class_exists( 'Admin' ) ) :
         }
         public function setFields() {
             $args =  array();
-            foreach($this->managers as $key => $title){                
+            foreach($this->managers as $key => $heading){                
                 $args[] =  array(
                     'id'        => $key,
-                    'title'     => $title,
+                    'title'     => $heading['title'],
                     'callback'  => array($this->callbacks_mngr,'checkboxField'),
                     'page'      => 'alecaddd_plugin',
                     'section'   => 'alecaddd_admin_index',
                     'args'   => array(
                         'option_name'   => 'alecaddd_plugin',
                         'label_for'     => $key,
-                        'class'         => 'ui-toggle'
+                        'class'         => 'ui-toggle',
+                        'desc'         => $heading['desc']
                     )
                 );
             }
