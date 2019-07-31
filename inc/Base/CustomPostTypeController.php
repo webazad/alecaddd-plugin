@@ -54,6 +54,7 @@ if ( ! class_exists( 'CustomPostTypeController' ) ) :
                 'supports'           	=> array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments', 'trackbacks', 'custom-fields', 'revisions', 'page-attributes', 'post-formats' ),
                 //'has_archive'    	=> 'archive-name',
                 'taxonomies'    	=> array('category','post_tag'),
+                'show_in_rest'    	=> true,
                 
             );
             register_post_type('books',$args);
