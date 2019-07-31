@@ -9,9 +9,12 @@ if ( ! class_exists( 'CustomPostTypeController' ) ) :
         public $countries = null;
         //public function __construct() {}
         public function register() {
-            add_action('init',array($this,'activate'));
+            $option = get_option('alecaddd_plugin');
+            $activated = $option['cpt_manager'];
+            if(! $activated) return;
+            add_action('init',array($this,'registerCustomPostTypes'));
         }
-        public function activate() {
+        public function registerCustomPostTypes() {
             $singular = apply_filters('custom_post','book');
             $labels = array(
                 'name'               => _x( 'Books', 'post type general name', 'quick_start_dev_pack' ),
